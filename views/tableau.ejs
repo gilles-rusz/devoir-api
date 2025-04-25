@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>tableau-de-bord port Russell</h1>
+
+  
+  <form action="/users" method="POST" name="addUser">
+    <fieldset>
+      <legend>Créer un utilisateur</legend>
+      <label for="name">Name</label>
+      <input type="text" name="name" required>
+      <label for="email">Email</label>
+      <input type="email" name="email" required>
+      <label for="password">Password</label>
+      <input type="password" name="password" required>
+      <button type="submit" style="margin-left: 1rem">Créer utilisateur</button>
+    </fieldset>
+  </form>
+
+  
+  <form action="/tableau-de-bord/updateUser" method="POST" name="updatedUser">
+    <fieldset>
+      <legend>Modifier un utilisateur</legend>
+      <label for="user">Utilisateur à modifier</label>
+      <select name="user" id="user-select">
+        <% users.forEach(function(user) { %>
+          <option value="<%= user._id %>"><%= user.name %></option>
+        <% }); %>
+      </select>
+      <button type="submit" style="margin-left: 1rem">Modifier l'utilisateur</button>
+    </fieldset>
+  </form>
+
+  <form action="/tableau-de-bord/deleteUser" method="GET" name="updatedUser">
+    <fieldset>
+      <legend>Supprimer un utilisateur</legend>
+      <label for="user">Utilisateur à supprimer</label>
+      <select name="user" id="user-select">
+        <% users.forEach(function(user) { %>
+          <option value="<%= user._id %>"><%= user.name %></option>
+        <% }); %>
+      </select>
+      <button type="submit" style="margin-left: 1rem">Supprimer l'utilisateur</button>
+    </fieldset>
+  </form>
+
+
+  <form action="/catways" method="POST" name="addCatway">
+    <fieldset>
+      <legend>Créer un embarquadaire</legend>
+      <label for="catwayNumber">Numéro de l'embarquadaire</label>
+      <input type="text" name="catwayNumber" required>
+      <label for="type">Type de l'embarquadaire</label>
+      <input type="text" name="type" required>
+      <label for="catwayState">Description de l'embarquadaire</label>
+      <input type="text" name="catwayState">
+      <button type="submit" style="margin-left: 1rem">Créer un embarquadaire</button>
+    </fieldset>
+  </form>
+
+  
+  <fieldset>
+    <legend>Les embarquadaires</legend>
+    <button><a href="/catways">Voir tous les embarquadaires</a></button>
+    <table>
+      <tr>
+        <th>Numéro d'embarquadaire</th>
+        <th colspan="3">Action</th>
+      </tr>
+      <% catways.forEach(function(catway) { %>
+        <tr>
+          <td><%= catway.catwayNumber %></td>
+          <td><a href="/catways/<%= catway._id %>">En savoir plus</a></td>
+          <td><a href="/tableau-de-bord/updateCatway/<%= catway._id %>">Modifier l'embarquadaire</a></td>
+          <td><a href="/tableau-de-bord/deleteCatway/<%= catway._id %>">Supprimer l'embarquadaire</a></td>
+        </tr>
+      <% }); %>
+    </table>
+  </fieldset>
+
+
+  <form action="/tableau-de-bord/addReservation" method="POST" name="addReservation">
+    <fieldset>
+      <legend>Créer une réservation</legend>
+      <label for="catwayNumber">Numéro de l'embarquadaire</label>
+      <select name="catwayNumber" id="catway-select">
+        <% catways.forEach(function(catway) { %>
+          <option value="<%= catway.catwayNumber %>"><%= catway.catwayNumber %></option>
+        <% }); %>
+      </select>
+      <label for="reservationId">Numéro de réservation</label>
+      <input type="text" name="reservationId" required>
+      <label for="clientName">Nom du client</label>
+      <select name="clientName" id="client-select">
+        <% users.forEach(function(user) { %>
+          <option value="<%= user.name %>"><%= user.name %></option>
+        <% }); %>
+      </select>
+      <label for="boatName">Nom du bateau</label>
+      <input type="text" name="boatName" required>
+      <br><br>
+      <label for="checkIn">Date d'entrée</label>
+      <input type="date" name="checkIn" required>
+      <label for="checkOut">Date de sortie</label>
+      <input type="date" name="checkOut" required>
+      <br><br>
+      <button type="submit">Créer un embarquadaire</button>
+    </fieldset>
+  </form>
+
+  <!-- Liste des réservations -->
+  <fieldset>
+    <legend>Liste des réservation</legend>
+    <button><a href="/catways/<%= catwayId %>/reservations">Toutes les réservations</a></button>
+    <table>
+      <tr>
+        <th>Numéro d'embarquadaire</th>
+        <th>Numéro de réservation</th>
+        <th colspan="2">Action</th>
+      </tr>
+      <% booking.forEach(function(book) { %>
+        <tr>
+          <td><%= book.catwayNumber %></td>
+          <td><%= book.bookingId %></td>
+          <td><a href="/tableau-de-bord/getReservationInfo/<%= book._id %>">En savoir plus</a></td>
+          <td><a href="/tableau-de-bord/deleteReservation/<%= book._id %>">Supprimer</a></td>
+        </tr>
+      <% }); %>
+    </table>
+  </fieldset>
+</body>
+</html>

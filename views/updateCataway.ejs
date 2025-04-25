@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>Update catway numéro : <%= catway.catwayNumber %></h1>
+
+  <form action="/tableau-de-bord/updateCatway/<%= catway._id %>" method="POST">
+    <label for="catwayState">Description de l'embarquadaire</label>
+    <br>
+    <textarea name="catwayState" rows="6" cols="33"><%= catway.catwayState %></textarea>
+    <br>
+    <button type="submit">Modifier un embarquadaire</button>
+  </form>
+</body>
+</html>

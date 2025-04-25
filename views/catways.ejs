@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>Liste des embarquadaires.</h1>
+
+  <table>
+    <tr>
+      <th>Numéro du quai</th>
+      <th>Type du quai</th>
+      <th>Action</th>
+    </tr>
+
+    <% catways.forEach(function(catway) { %>
+      <tr>
+        <td><%= catway.catwayNumber %></td>
+        <td><%= catway.type %></td>
+        <td>
+          <a class="button" href="/catways/<%= catway._id %>">En savoir plus</a>
+        </td>
+      </tr>
+    <% }); %>
+  </table>
+</body>
+</html>

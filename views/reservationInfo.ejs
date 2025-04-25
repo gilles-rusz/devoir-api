@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>Information sur la réservation.</h1>
+
+  <table>
+    <tr>
+      <th>Id de réservation</th>
+      <th>Numéro du quai</th>
+      <th>Nom du client</th>
+      <th>Nom du bâteau</th>
+      <th>Date d'entrée</th>
+      <th>Date de sortie</th>
+    </tr>
+    <tr>
+      <td><%= booking.bookingId %></td>
+      <td><%= booking.catwayNumber %></td>
+      <td><%= booking.clientName %></td>
+      <td><%= booking.boatName %></td>
+      <td><%= booking.checkIn %></td>
+      <td><%= booking.checkOut %></td>
+    </tr>
+  </table>
+</body>
+</html>

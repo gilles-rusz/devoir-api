@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>Liste des réservations.</h1>
+
+  <table>
+    <tr>
+      <th>Id de réservation</th>
+      <th>Numéro du quai</th>
+      <th>Nom du client</th>
+      <th>Date d'entrée</th>
+      <th>Action</th>
+    </tr>
+
+    <% booking.forEach(function(book) { %>
+      <tr>
+        <td><%= book.bookingId %></td>
+        <td><%= book.catwayNumber %></td>
+        <td><%= book.clientName %></td>
+        <td><%= book.checkIn %></td>
+        <td>
+          <a class="button" href="/catways/<%= book.catwayId %>/reservations/<%= book._id %>">En savoir plus</a>
+        </td>
+      </tr>
+    <% }); %>
+  </table>
+</body>
+</html>

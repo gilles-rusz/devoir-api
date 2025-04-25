@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>Gestion du port de Russel</h1>
+
+  <p>Bienvenue sur l'API qui permet la gestion du port de Russel.</p>
+  <p>Ici, vous pourrez gérer les embarquadaires et les réservations du port.</p>
+  <p>Veuillez-vous connecter pour avoir accès à la gestion.</p>
+
+  <form method="POST" action="/users/authenticate">
+    <fieldset>
+      <legend>Connection</legend>
+      <label for="email">Nom d'utilisateur:</label>
+      <input type="text" name="email" required>
+      <br><br>
+      <label for="password">Mot de passe:</label>
+      <input type="password" name="password" required>
+      <br><br>
+      <button type="submit">Se connecter</button>
+    </fieldset>
+  </form>
+
+  <h2>Lien vers la documentation</h2>
+  <a href="../docs/index.html">Documentation</a>
+</body>
+</html>
